@@ -6,18 +6,37 @@ import styled from 'styled-components'
 import OrderInfo from './OrderInfo'
 import BurgerBuilder from './BurgerBuilder'
 
-const StyledButton = styled.button`
-background: transparent;
-border-radius: 3px;
-border: 2px solid palevioletred;
-color: palevioletred;
-margin: 0 1em;
-padding: 0.25em 1em;
+const StyledButton = styled.a`
+margin: 4%;
 
+text-align: center;
+display: flex;
+flex-direction: column;
+
+.example_c {
+     color: #555;
+   
+     text-decoration: none;
+     background: #ffffff;
+     padding: 3%;
+     border: 2px solid #555;
+     border-radius: 10px;
+     transition: all 0.4s ease 0s;
+     }
+     .example_c:hover {
+     
+          background: #fff5d7;
+          border-color: tomato;
+          transition: all 0.4s ease 0s;
+          }
 `
+
+
+
 const BurgerBuilderContainer = styled.div`
 display: flex;
 flex-direction: column;
+
 margin: 5%;
 padding:3%;
 list-style:none;
@@ -42,15 +61,19 @@ const OrderForm = (props) => {
                    My Order
                </h1>
 
-               <form>
+               
                    <OrderInfo/>
                     
                     <BurgerBuilder />
                     <StyledButton
-                    > + Add to Order</StyledButton>
-                    <button
-                    > ⨂ Remove from Order</button>
-               </form>
+                    >
+                    <a href="#" class="example_c">Submit Order</a>
+                  </StyledButton>
+                  <StyledButton
+                    >
+                    <a href="#" class="example_c">Remove Item</a>
+                  </StyledButton>
+      
           </BurgerBuilderContainer>
      )
 }

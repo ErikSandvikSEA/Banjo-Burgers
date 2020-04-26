@@ -12,7 +12,7 @@ const StyledUl = styled.ul`
 margin:0;
 padding:0;
 list-style:none;
-transform:skew(-20deg);
+transform:skew(-10deg);
 
  li{
   background:#fff;
@@ -28,7 +28,7 @@ transform:skew(-20deg);
      padding:1em 2em;
      color:inherit;
      text-decoration:none;
-     transform:skew(10deg);
+     transform:skew();
    };
 
   &:first-child{

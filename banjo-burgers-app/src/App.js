@@ -23,7 +23,8 @@ const Title = styled.h1`
   font-size: 5rem;
   text-align: center;
   color: tomato;
-
+  text-shadow:0 4px 2px rgba(0,0,0,0.2);
+  
 `;
 
 const Header = styled.header`

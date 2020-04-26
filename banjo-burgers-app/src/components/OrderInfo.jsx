@@ -17,14 +17,18 @@ box-shadow:0 5px 5px rgba(0,0,0,0.1);
 color:#555;
 font-weight:bolder;
 transition:all 0.3s linear;
+font-family: calibri;
      form {
           display: flex;
           flex-direction: column;
           input {
                margin: 2%;
+               border: 1px #555 solid;
+               border-radius: 3px;
           };
           textarea {
                margin: 2%;
+
           };
      };
 `
