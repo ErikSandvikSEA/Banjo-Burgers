@@ -53,7 +53,11 @@ transition:all 0.3s linear;
 
 
 const OrderForm = (props) => {
-     const { } = props
+     const {
+          values,
+          onInputChange,
+          onSubmit,
+      } = props
 
      return (
           <BurgerBuilderContainer>
@@ -62,12 +66,22 @@ const OrderForm = (props) => {
                </h1>
 
                
-                   <OrderInfo/>
+                   <OrderInfo
+                    orderInfoValues={values}
+                    orderSubmit={onSubmit}
+                    orderInputChange={onInputChange}
+                   />
                     
-                    <BurgerBuilder />
+                    <BurgerBuilder
+                         orderInfoValues={values}
+                         orderSubmit={onSubmit}
+                         orderInputChange={onInputChange}
+                    />
                     <StyledButton
                     >
-                    <a href="#" class="example_c">Submit Order</a>
+                    <a href="#" class="example_c"
+                    onClick={onSubmit}>
+                         Submit Order</a>
                   </StyledButton>
                   <StyledButton
                     >

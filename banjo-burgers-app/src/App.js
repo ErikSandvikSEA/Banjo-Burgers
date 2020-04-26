@@ -6,6 +6,7 @@ import NavBar from './components/NavBar'
 import axios from 'axios'
 import * as yup from 'yup'
 import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
 
 const MainDiv = styled.div`
 // Ragin Beige
@@ -34,7 +35,80 @@ flex-direction: column;
 align-items: center;
 `
 
+const initialOrderValues = {
+    name: '',
+    email: '',
+    specialInstructions: '',
+    patties: false,
+    buns: false,
+    toppings: {
+      cheese: false,
+      mushroom: false,
+      onion: false,
+      lettuce: false,
+      tomato: false,
+      pineapple: false,
+      bacon: false,
+    }
+  }
+
+
+const initialOrder =  [
+{
+  id: uuid(),
+  name: 'Banjo Bill',
+  email: 'BanjoBill@BanjoBurger.ca',
+  specialInstructions: 'EXTRA Banjo Sauce!!',
+  patties: 'quarterPoundBeef',
+  buns: 'sesame',
+  toppings: {
+    cheese: true,
+    mushroom: true,
+    onion: true,
+    lettuce: false,
+    tomato: false,
+    pineapple: false,
+    bacon: true,
+  },
+},
+]
+
+
+
+
+
 const App = () => {
+  const [orderFormValues, setOrderFormValues] = useState(initialOrderValues)
+  const [orders, setOrders] = useState(initialOrder)
+  
+  const onInputChange = e => {
+    const inputName = e.target.name
+    const inputValue = e.target.value
+    setOrderFormValues({
+      ...orderFormValues,
+      [inputName]: inputValue
+    })
+  }
+
+  const onSubmit = e => {
+    e.preventDefault()
+    const newOrder = {
+        name: orderFormValues.name,
+        email: orderFormValues.email,
+        specialInstructions: orderFormValues.specialInstructions,
+        patties: orderFormValues.patties,
+        buns: orderFormValues.buns,
+        toppings: Object.keys(orderFormValues.toppings)
+        .filter(topping => orderFormValues.toppings[topping] === true)
+      }
+      setOrders(
+        [ ...orders, newOrder ]
+      )
+      setOrderFormValues(initialOrderValues)
+    }
+  
+
+
   return (
     <MainDiv>
 
@@ -45,12 +119,24 @@ const App = () => {
 
       <Switch>
       <Route path='/order-form/my-order'>
-           <MyOrder />
+        <div>
+           {
+             orders.map(order => {
+               return (
+               <MyOrder key={order.id} details={order}/>
+               )
+             })
+           }
+           </div>
       </Route>
 
 
       <Route path='/order-form'>
-           <OrderForm />
+           <OrderForm 
+           values={orderFormValues}
+           onInputChange={onInputChange}
+           onSubmit={onSubmit}
+           />
       </Route>
  </Switch>
 

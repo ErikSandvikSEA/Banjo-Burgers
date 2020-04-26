@@ -191,7 +191,7 @@ label {
 `
 
 const BurgerBuilder = (props) => {
-     const { } = props
+     const { orderInfoValues, orderSubmit, orderInputChange } = props
      return (
           <Wrapper>
 
@@ -202,15 +202,17 @@ const BurgerBuilder = (props) => {
 
                          <StyledSelect
                               name='patties'
+                              value={orderInfoValues.patties}
+                              onChange={orderInputChange}
                          >
-                              <option value='selectBun'>Select</option>
-                              <option value='quarterPoundBeef'>1/4 lb Beef</option>
-                              <option value='groundTurkey'>Ground Turkey</option>
-                              <option value='chickenBreast'>Grilled Chicken Breast</option>
-                              <option value='salmon'>Salmon (+$1.50)</option>
-                              <option value='blackBeanBurger'>Black Bean</option>
-                              <option value='impossibleBurger'>Impossible Burger (+$2.00)</option>
-                              <option value='beyondBurger'>Beyond Burger (+$2.00)</option>
+                              <option value='Select Patty'>Select</option>
+                              <option value='1/4 lb Beef'>1/4 lb Beef</option>
+                              <option value='Ground Turkey'>Ground Turkey</option>
+                              <option value='Grilled Chicken Breast'>Grilled Chicken Breast</option>
+                              <option value='Salmon'>Salmon (+$1.50)</option>
+                              <option value='Black Bean'>Black Bean</option>
+                              <option value='Impossible Burger'>Impossible Burger (+$2.00)</option>
+                              <option value='Beyond Burger'>Beyond Burger (+$2.00)</option>
                          </StyledSelect></label>
                </div>
 
