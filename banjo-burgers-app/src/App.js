@@ -71,17 +71,63 @@ const initialOrder =  [
 },
 ]
 
+const initialFormErrors = {
+  username: '',
+  email: '',
+  patties: '',
+  buns: '',
+}
 
+const formSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, 'Username must have at least 2 characters')
+    .required('Username is required'),
+  email: yup
+    .string()
+    .email('Valid email is required')
+    .required('Email is required'),
+  patties: yup
+    .string()
+    .required('Select a patty'),
+    buns: yup
+    .string()
+    .required('Select a patty')
+})
 
 
 
 const App = () => {
   const [orderFormValues, setOrderFormValues] = useState(initialOrderValues)
   const [orders, setOrders] = useState(initialOrder)
+  const [formDisabled, setFormDisabled] = useState(true)
+  const [formErrors, setFormErrors] = useState(initialFormErrors)
   
   const onInputChange = e => {
     const inputName = e.target.name
     const inputValue = e.target.value
+
+    yup
+    .reach(formSchema, inputName)
+    .validate(inputValue)
+    .then(valid => {
+      //clear errors
+      setFormErrors({
+        ...formErrors,
+        [inputName]: '',
+
+      })
+    })
+    .catch(err => {
+      
+      //set error in the right place
+      setFormErrors({
+        ...formErrors,
+        [inputName]: err.errors[0]
+      })
+      
+    })
+
     setOrderFormValues({
       ...orderFormValues,
       [inputName]: inputValue
@@ -106,6 +152,20 @@ const App = () => {
       setOrderFormValues(initialOrderValues)
     }
   
+    useEffect(() => {
+      // 🔥 STEP 8 - IF THE FORM VALUES CHANGE, WE NEED TO RUN VALIDATION
+      // and use them to enable/disable the submit button
+      /* We pass the entire state into the entire schema, no need to use reach here. 
+      We want to make sure it is all valid before we allow a user to submit
+      isValid comes from Yup directly */
+      formSchema.isValid(orderFormValues)
+        .then(valid => {
+          setFormDisabled(!valid);
+      });
+    }, [orderFormValues] )
+
+
+
     const onCheckboxChange = e => {
       // a) pull the name of the checkbox from the event
       const { name } = e.target
@@ -149,6 +209,8 @@ const App = () => {
            onInputChange={onInputChange}
            onSubmit={onSubmit}
            onCheckboxChange={onCheckboxChange}
+           disabled={formDisabled}
+           errors={formErrors}
            />
       </Route>
  </Switch>

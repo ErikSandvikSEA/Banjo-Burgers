@@ -58,6 +58,8 @@ const OrderForm = (props) => {
           onInputChange,
           onSubmit,
           onCheckboxChange,
+          disabled,
+          errors,
       } = props
 
      return (
@@ -71,6 +73,7 @@ const OrderForm = (props) => {
                     orderInfoValues={values}
                     orderSubmit={onSubmit}
                     orderInputChange={onInputChange}
+                    errors={errors}
                    />
                     
                     <BurgerBuilder
@@ -78,16 +81,18 @@ const OrderForm = (props) => {
                          orderSubmit={onSubmit}
                          orderInputChange={onInputChange}
                          onCheckboxChange={onCheckboxChange}
+                         errors={errors}
                     />
                     <StyledButton
                     >
-                    <a href="#" className="example_c"
+                    <button className="example_c"
+                    disabled={disabled}
                     onClick={onSubmit}>
-                         Submit Order</a>
+                         Submit Order</button>
                   </StyledButton>
                   <StyledButton
                     >
-                    <a href="#" className="example_c">Remove Item</a>
+                    <button href="#" className="example_c">Remove Item</button>
                   </StyledButton>
       
           </BurgerBuilderContainer>

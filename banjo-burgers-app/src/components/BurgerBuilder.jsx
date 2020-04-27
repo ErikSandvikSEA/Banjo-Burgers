@@ -194,7 +194,7 @@ label {
 `
 
 const BurgerBuilder = (props) => {
-     const { orderInfoValues, orderInputChange, onCheckboxChange } = props
+     const { orderInfoValues, orderInputChange, onCheckboxChange, errors } = props
      return (
           <Wrapper>
 
@@ -202,13 +202,15 @@ const BurgerBuilder = (props) => {
                     <label><h4>
                          Patties
                </h4>
+               <h3>{errors.patties}</h3>
+     
 
                          <StyledSelect
                               name='patties'
                               value={orderInfoValues.patties}
                               onChange={orderInputChange}
                          >
-                              <option value='Select Patty'>Select</option>
+                              <option value=''>Select</option>
                               <option value='1/4 lb Beef'>1/4 lb Beef</option>
                               <option value='Ground Turkey'>Ground Turkey</option>
                               <option value='Grilled Chicken Breast'>Grilled Chicken Breast</option>
@@ -223,13 +225,15 @@ const BurgerBuilder = (props) => {
                     <label><h4>
                          Buns
                </h4>
+            
+        <h3>{errors.buns}</h3>
 
                          <StyledSelect
                               name='buns'
                               value={orderInfoValues.buns}
                               onChange={orderInputChange}
                          >
-                              <option value='Select Bun'>Select</option>
+                              <option value=''>Select</option>
                               <option value='Plain'>Plain</option>
                               <option value='Sesame Seed'>Sesame Seed</option>
                               <option value='Potato'>Potato</option>

@@ -34,7 +34,7 @@ font-family: calibri;
 `
 
 const OrderInfo = (props) => {
-     const { orderInfoValues, orderInputChange } = props
+     const { orderInfoValues, orderInputChange, errors } = props
      return (
           <StyledDiv>
                <h4>
@@ -52,6 +52,7 @@ const OrderInfo = (props) => {
                               onChange={orderInputChange}
                          />
                     </label>
+                    <h3>{errors.name}</h3>
                     <label>&nbsp;Email:&nbsp;
                     <input
                               name='email'
@@ -60,6 +61,7 @@ const OrderInfo = (props) => {
                               onChange={orderInputChange}
                          />
                     </label>
+                    <h3>{errors.email}</h3>
                     <label>&nbsp;Special Instructions:&nbsp;
                     <input
                               size='35'
