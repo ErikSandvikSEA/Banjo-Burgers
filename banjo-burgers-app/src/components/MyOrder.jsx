@@ -21,7 +21,14 @@ const MyOrder = (props) => {
      <p>Patty: {details.patties}</p>
      <p>Bun: {details.buns}</p>
       </div>
-      
+      <ul>
+            {
+              
+              details.toppings.map((topping, idx) => {
+              return (<li key={key}>{topping}</li>)
+              })
+            }
+          </ul>
      
           <form>
       <input></input>

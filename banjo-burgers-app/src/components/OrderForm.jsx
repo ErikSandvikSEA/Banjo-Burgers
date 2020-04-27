@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import OrderInfo from './OrderInfo'
 import BurgerBuilder from './BurgerBuilder'
 
-const StyledButton = styled.a`
+const StyledButton = styled.div`
 margin: 4%;
 
 text-align: center;
@@ -57,12 +57,13 @@ const OrderForm = (props) => {
           values,
           onInputChange,
           onSubmit,
+          onCheckboxChange,
       } = props
 
      return (
           <BurgerBuilderContainer>
                <h1>
-                   My Order
+                   Burger Builder
                </h1>
 
                
@@ -76,16 +77,17 @@ const OrderForm = (props) => {
                          orderInfoValues={values}
                          orderSubmit={onSubmit}
                          orderInputChange={onInputChange}
+                         onCheckboxChange={onCheckboxChange}
                     />
                     <StyledButton
                     >
-                    <a href="#" class="example_c"
+                    <a href="#" className="example_c"
                     onClick={onSubmit}>
                          Submit Order</a>
                   </StyledButton>
                   <StyledButton
                     >
-                    <a href="#" class="example_c">Remove Item</a>
+                    <a href="#" className="example_c">Remove Item</a>
                   </StyledButton>
       
           </BurgerBuilderContainer>

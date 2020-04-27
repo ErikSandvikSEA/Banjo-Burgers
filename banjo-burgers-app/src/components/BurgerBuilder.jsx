@@ -63,6 +63,9 @@ option {
 }
 `
 const Checkbox = styled.div`
+display: flex;
+justify-content: space-between;
+width: 200px;
 label {
      -webkit-touch-callout: none;
      -webkit-user-select: none;
@@ -191,7 +194,7 @@ label {
 `
 
 const BurgerBuilder = (props) => {
-     const { orderInfoValues, orderSubmit, orderInputChange } = props
+     const { orderInfoValues, orderInputChange, onCheckboxChange } = props
      return (
           <Wrapper>
 
@@ -223,50 +226,106 @@ const BurgerBuilder = (props) => {
 
                          <StyledSelect
                               name='buns'
+                              value={orderInfoValues.buns}
+                              onChange={orderInputChange}
                          >
-                              <option value='selectBun'>Select</option>
-                              <option value='plain'>Plain</option>
-                              <option value='sesameSeed'>Sesame Seed</option>
-                              <option value='potato'>Potato</option>
-                              <option value='wholeWheat'>Whole Wheat</option>
-                              <option value='lettuceWrap'>Lettuce Wrap</option>
-                              <option value='pretzel'>Pretzel Roll (+$2.00)</option>
-                              <option value='glutenFree'>Gluten-Free (+$2.50)</option>
+                              <option value='Select Bun'>Select</option>
+                              <option value='Plain'>Plain</option>
+                              <option value='Sesame Seed'>Sesame Seed</option>
+                              <option value='Potato'>Potato</option>
+                              <option value='Whole Wheat'>Whole Wheat</option>
+                              <option value='Lettuce Wrap'>Lettuce Wrap</option>
+                              <option value='Pretzel'>Pretzel Roll (+$2.00)</option>
+                              <option value='Gluten Free'>Gluten-Free (+$2.50)</option>
                          </StyledSelect></label>
                </div>
 
                <ToppingsContainer>
-                    <form>
+                    <form size='100'>
                          <h4>
                               Toppings
                </h4>
                          <Checkbox>
-                         <input type="checkbox" class="css-checkbox" id="checkbox1"  name='cheese'/>
-						<label for="checkbox1" name="checkbox1_lbl" class="css-label lite-orange-check">Cheese</label>
+                         <input 
+                              type="checkbox" 
+                              className="css-checkbox" 
+                              id="checkbox1"  
+                              name='Cheese'
+                              checked={orderInfoValues.toppings.cheese}
+                              onChange={onCheckboxChange}/> Cheese <label htmlFor="checkbox1"
+                               name="checkbox1_lbl" 
+                               className="css-label lite-orange-check"></label>
                          </Checkbox>
                          <Checkbox>
-                         <input type="checkbox" class="css-checkbox" id="checkbox2"  name='mushroom'/>
-						<label for="checkbox2" name="checkbox1_lbl" class="css-label lite-orange-check">Mushroom</label>
+                         <input 
+                              type="checkbox" 
+                              className="css-checkbox" 
+                              id="checkbox2"  
+                              name='Mushroom'
+                              checked={orderInfoValues.toppings.mushroom}
+                              onChange={onCheckboxChange}/> Mushroom <label htmlFor="checkbox2"
+                               name="checkbox1_lbl" 
+                               className="css-label lite-orange-check"></label>
                          </Checkbox>
                          <Checkbox>
-                         <input type="checkbox" class="css-checkbox" id="checkbox3"  name='onion'/>
-						<label for="checkbox3" name="checkbox1_lbl" class="css-label lite-orange-check">Onion</label>
+                         <input 
+                              type="checkbox" 
+                              className="css-checkbox" 
+                              id="checkbox3"  
+                              name='Onion'
+                              checked={orderInfoValues.toppings.onion}
+                              onChange={onCheckboxChange}/>Onion <label htmlFor="checkbox3"
+                               name="checkbox1_lbl" 
+                               className="css-label lite-orange-check"></label>
                          </Checkbox>
                          <Checkbox>
-                         <input type="checkbox" class="css-checkbox" id="checkbox5"  name='lettuce'/>
-						<label for="checkbox5" name="checkbox1_lbl" class="css-label lite-orange-check">Lettuce</label>
+                         <input 
+                              type="checkbox" 
+                              className="css-checkbox" 
+                              id="checkbox5"  
+                              name='Lettuce'
+                              checked={orderInfoValues.toppings.lettuce}
+                              onChange={onCheckboxChange}/>Lettuce
+
+                              <label htmlFor="checkbox5"
+                               name="checkbox1_lbl" 
+                               className="css-label lite-orange-check"></label>
                          </Checkbox>
                          <Checkbox>
-                         <input type="checkbox" class="css-checkbox" id="checkbox6"  name='tomato'/>
-						<label for="checkbox6" name="checkbox1_lbl" class="css-label lite-orange-check">Tomato</label>
+                         <input 
+                              type="checkbox" 
+                              className="css-checkbox" 
+                              id="checkbox6"  
+                              name='Tomato'
+                              checked={orderInfoValues.toppings.tomato}
+                              onChange={onCheckboxChange}/>Tomato
+                              <label htmlFor="checkbox6"
+                               name="checkbox1_lbl" 
+                               className="css-label lite-orange-check"></label>
                          </Checkbox>
                          <Checkbox>
-                         <input type="checkbox" class="css-checkbox" id="checkbox7"  name='pineapple'/>
-						<label for="checkbox7" name="checkbox1_lbl" class="css-label lite-orange-check">Grilled Pineapple</label>
+                         <input 
+                              type="checkbox" 
+                              className="css-checkbox" 
+                              id="checkbox7"  
+                              name='Pineapple'
+                              checked={orderInfoValues.toppings.pineapple}
+                              onChange={onCheckboxChange}/>Pineapple
+
+                              <label htmlFor="checkbox7"
+                               name="checkbox1_lbl" 
+                               className="css-label lite-orange-check"></label>
                          </Checkbox>
                          <Checkbox>
-                         <input type="checkbox" class="css-checkbox" id="checkbox8"  name='bacon'/>
-						<label for="checkbox8" name="checkbox1_lbl" class="css-label lite-orange-check">Bacon (+ $1.50)</label>
+                         <input 
+                              type="checkbox" 
+                              className="css-checkbox" 
+                              id="checkbox8"  
+                              name='Bacon'
+                              checked={orderInfoValues.toppings.bacon}
+                              onChange={onCheckboxChange}/>Bacon (+ $1.50)<label htmlFor="checkbox8"
+                               name="checkbox1_lbl" 
+                               className="css-label lite-orange-check"></label>
                          </Checkbox>
                     </form>
                </ToppingsContainer>

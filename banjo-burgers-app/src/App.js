@@ -36,40 +36,38 @@ align-items: center;
 `
 
 const initialOrderValues = {
+    id: uuid(),
     name: '',
     email: '',
     specialInstructions: '',
     patties: false,
     buns: false,
     toppings: {
-      cheese: false,
-      mushroom: false,
-      onion: false,
-      lettuce: false,
-      tomato: false,
-      pineapple: false,
-      bacon: false,
+      Cheese: false,
+      Mushroom: false,
+      Onion: false,
+      Lettuce: false,
+      Tomato: false,
+      Pineapple: false,
+      Bacon: false,
     }
   }
 
-
+//sample order
 const initialOrder =  [
 {
   id: uuid(),
   name: 'Banjo Bill',
   email: 'BanjoBill@BanjoBurger.ca',
   specialInstructions: 'EXTRA Banjo Sauce!!',
-  patties: 'quarterPoundBeef',
-  buns: 'sesame',
-  toppings: {
-    cheese: true,
-    mushroom: true,
-    onion: true,
-    lettuce: false,
-    tomato: false,
-    pineapple: false,
-    bacon: true,
-  },
+  patties: '1/4 Lb Beef',
+  buns: 'Sesame',
+  toppings: [
+    'cheese',
+    'mushroom',
+    'onion',
+    'bacon',
+  ]
 },
 ]
 
@@ -93,6 +91,7 @@ const App = () => {
   const onSubmit = e => {
     e.preventDefault()
     const newOrder = {
+        id: orderFormValues.id,
         name: orderFormValues.name,
         email: orderFormValues.email,
         specialInstructions: orderFormValues.specialInstructions,
@@ -107,7 +106,20 @@ const App = () => {
       setOrderFormValues(initialOrderValues)
     }
   
-
+    const onCheckboxChange = e => {
+      // a) pull the name of the checkbox from the event
+      const { name } = e.target
+      // b) pull whether checked true or false, from the event
+      const isChecked = e.target.checked
+      // c) set a new state for the whole form
+      setOrderFormValues({
+        ...orderFormValues,
+        toppings: {
+          ...orderFormValues.toppings,
+          [name]: isChecked,
+        }
+      })
+    }
 
   return (
     <MainDiv>
@@ -136,6 +148,7 @@ const App = () => {
            values={orderFormValues}
            onInputChange={onInputChange}
            onSubmit={onSubmit}
+           onCheckboxChange={onCheckboxChange}
            />
       </Route>
  </Switch>

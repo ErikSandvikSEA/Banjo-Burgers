@@ -56,11 +56,11 @@ const NavBar = () => {
           <nav>
                <StyledUl>
                     <li><Route path='/'>
-                         <a><Link to='/'>Home</Link></a>
+                         <Link to='/'>Home</Link>
                     </Route>
                     </li>
-                    <li><a><Link to='/order-form'>Start Burger Builder</Link></a></li>
-                    <li><a><Link to='/order-form/my-order'>My Order</Link></a></li>
+                    <li><Link to='/order-form'>Start Burger Builder</Link></li>
+                    <li><Link to='/order-form/my-order'>My Order</Link></li>
 
                </StyledUl>
           </nav>

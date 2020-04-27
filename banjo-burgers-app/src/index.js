@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from "./App";
 
-const Body = styled.body`
+const Body = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
